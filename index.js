@@ -49,17 +49,22 @@ const sendEmail = async (subject, message, sent_to, sent_from, reply_to) => {
 app.get('/', (req, res) => {
     res.send("welcome")
 })
+// app.post('/sendemail', (req, res) => {
+//     const { name, address } = req.body;
+//     console.log(name, address)
 
+// })
 
 
 app.post('/sendemail', async (req, res) => {
     const { name, email, address } = req.body;
+
     try {
 
-        const sent_to = "monzurulislam997@gmail.com"
+        const sent_to = email
         const sent_from = process.env.EMAIL_USER
         const reply_to = email
-        const subject = "Online Order "
+        const subject = "Online Order"
 
         const message = ` <h3> Hello, ${name} </h3>
            <p> Thank your for your order </p>
